@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="100dp"
+            android:fontFamily="cursive"
+            android:text="@string/app_name"
+            android:textColor="@color/teal_200"
+            android:textSize="50sp"
+            android:layout_marginStart="100dp" />
+        <TextView
+            android:id="@+id/fstTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="100dp"
+            android:fontFamily="cursive"
+            android:textColor="#0F8B80"
+            android:textSize="20sp"
+            android:layout_marginStart="100dp" />
+
+        <EditText
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:ems="10"
+            android:hint="@string/number"
+            android:textColor="#84E2DB"
+            tools:layout_marginTop="20dp"
+            android:layout_marginStart="100dp"
+            android:inputType="phone"/>
+
+        <Button
+            android:id="@+id/btnCall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/call"
+            android:layout_marginStart="150dp" />
+
+</LinearLayout>
