@@ -1,6 +1,6 @@
 package com.example.contactsapp;
+
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -9,10 +9,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.viewpager.widget.ViewPager;
+
 import android.view.View.OnClickListener;
 
-public class MainActivity extends Activity {
+import com.example.contactsapp.main.SectionsPagerAdapter;
+import com.google.android.material.tabs.TabLayout;
+
+
+public class MainActivity extends AppCompatActivity {
     private EditText inputNumber;
     private Button btn_call;
 
@@ -21,6 +29,12 @@ public class MainActivity extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
+        ViewPager viewPager = findViewById(R.id.view_pager);
+        viewPager.setAdapter(sectionsPagerAdapter);
+        TabLayout tabs = findViewById(R.id.tabs);
+        tabs.setupWithViewPager(viewPager);
 
         inputNumber = (EditText) findViewById(R.id.number);
         btn_call = (Button) findViewById(R.id.btnCall);
@@ -35,6 +49,7 @@ public class MainActivity extends Activity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 101) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 callPhoneNumber();
@@ -64,7 +79,7 @@ public class MainActivity extends Activity {
                 callIntent.setData(Uri.parse("tel:" + inputNumber.getText().toString()));
                 startActivity(callIntent);
             }
-            
+
         } catch (Exception e) {
 
             e.printStackTrace();
