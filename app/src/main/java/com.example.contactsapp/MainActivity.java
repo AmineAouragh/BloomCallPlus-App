@@ -15,9 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.viewpager.widget.ViewPager;
 
-import android.view.View.OnClickListener;
 
 import com.example.contactsapp.main.SectionsPagerAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.ic_outline_message
     };
     private TabLayout tabs;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +47,24 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
+        fab = findViewById(R.id.fab_dialpad);
 
         setupTabIcons();
 
-        inputNumber = (EditText) findViewById(R.id.number);
-        btn_call = (Button) findViewById(R.id.btnCall);
+        /* This block of code is replaced by lambda
+         fab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+          });
+        * */
+
+        fab.setOnClickListener(view -> Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                                               .setAction("Action", null).show());
+
+        //inputNumber = (EditText) findViewById(R.id.number);
+        //btn_call = (Button) findViewById(R.id.btnCall);
 
         /* This block is replaced by the lambda form
         * btn_call.setOnClickListener(new OnClickListener() {
@@ -60,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
           });
         * */
 
-        btn_call.setOnClickListener(v -> callPhoneNumber());
+        //btn_call.setOnClickListener(v -> callPhoneNumber());
+
     }
 
     private void setupTabIcons() {
@@ -69,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
         tabs.getTabAt(2).setIcon(tabIcons[2]);
     }
 
+
+    /*
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -107,6 +125,6 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
 
         }
-    }
+    }*/
 
 }
