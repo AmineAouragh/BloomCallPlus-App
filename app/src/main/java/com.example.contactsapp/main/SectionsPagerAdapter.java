@@ -11,29 +11,33 @@ import com.example.contactsapp.R;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_recent, R.string.tab_text_contacts, R.string.tab_text_messages};
-    private final Context mContext;
+    private final Context myContext;
+    private final int totalTabs;
 
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
+    public SectionsPagerAdapter(Context context, FragmentManager fm, int totalTabs) {
         super(fm);
-        mContext = context;
+        myContext = context;
+        this.totalTabs = totalTabs;
     }
 
     @NonNull
     @Override
     public Fragment getItem(int position) {
-
-        return PlaceholderFragment.newInstance(position + 1);
-    }
-
-    @Override
-    public CharSequence getPageTitle(int position) {
-        return mContext.getResources().getString(TAB_TITLES[position]);
+        switch (position) {
+            case 0:
+                return new RecentsFragment();
+            case 1:
+                return new ContactsFragment();
+            case 2:
+                return new MessagesFragment();
+            default:
+                return null;
+        }
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return totalTabs;
     }
 }
