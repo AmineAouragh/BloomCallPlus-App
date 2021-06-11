@@ -1,13 +1,16 @@
 package com.example.contactsapp;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.contactsapp.main.SectionsPagerAdapter;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
@@ -17,6 +20,14 @@ public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+
+    private FloatingActionButton mNewContactFab, mNewMsgFab, mNewDialFab;
+
+    private ExtendedFloatingActionButton mNewActionFab;
+
+    private TextView addNewContactTxt, addNewMsgText, newDialTxt;
+
+    private Boolean isAllFabsVisible;
 
     private int[] tabIcons = {
             R.drawable.ic_tab_history,
@@ -34,6 +45,67 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         setContentView(R.layout.activity_main);
+
+        mNewActionFab = findViewById(R.id.new_action_fab);
+
+        mNewContactFab = findViewById(R.id.new_contact);
+        mNewMsgFab = findViewById(R.id.new_msg);
+        mNewDialFab = findViewById(R.id.new_dial);
+
+        addNewContactTxt = findViewById(R.id.add_new_contact_text);
+        addNewMsgText = findViewById(R.id.new_msg_text);
+        newDialTxt = findViewById(R.id.new_dial_text);
+
+        mNewContactFab.setVisibility(View.GONE);
+        addNewContactTxt.setVisibility(View.GONE);
+
+        mNewMsgFab.setVisibility(View.GONE);
+        addNewMsgText.setVisibility(View.GONE);
+
+        mNewDialFab.setVisibility(View.GONE);
+        newDialTxt.setVisibility(View.GONE);
+
+        isAllFabsVisible = false;
+
+        mNewActionFab.shrink();
+
+        mNewActionFab.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!isAllFabsVisible) {
+
+                            mNewContactFab.show();
+                            mNewMsgFab.show();
+                            mNewDialFab.show();
+
+                            addNewContactTxt.setVisibility(View.VISIBLE);
+                            addNewMsgText.setVisibility(View.VISIBLE);
+                            newDialTxt.setVisibility(View.VISIBLE);
+
+                            mNewActionFab.extend();
+
+                            isAllFabsVisible = true;
+
+                        } else {
+
+                            mNewActionFab.hide();
+                            mNewMsgFab.hide();
+                            mNewDialFab.hide();
+
+                            addNewContactTxt.setVisibility(View.GONE);
+                            addNewMsgText.setVisibility(View.GONE);
+                            newDialTxt.setVisibility(View.GONE);
+
+                            mNewActionFab.shrink();
+
+                            isAllFabsVisible = false;
+
+                        }
+                    }
+                }
+        );
+
 
         ViewPager viewPager = findViewById(R.id.viewPager);
         tabLayout = findViewById(R.id.tabLayout);
@@ -67,35 +139,6 @@ public class MainActivity extends AppCompatActivity {
 
         setupTabIcons();
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-
-
-        /* This block of code is replaced by lambda
-         fab.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-          });
-        * */
-
-        fab.setOnClickListener(view -> Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                                               .setAction("Action", null).show());
-
-        //inputNumber = (EditText) findViewById(R.id.number);
-        //btn_call = (Button) findViewById(R.id.btnCall);
-
-        /* This block is replaced by the lambda form
-        * btn_call.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callPhoneNumber();
-            }
-          });
-        * */
-
-        //btn_call.setOnClickListener(v -> callPhoneNumber());
-
     }
 
     private void setupTabIcons() {
@@ -103,47 +146,5 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(1).setIcon(tabIcons[1]);
         tabLayout.getTabAt(2).setIcon(tabIcons[2]);
     }
-
-
-    /*
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 101) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                callPhoneNumber();
-            }
-        }
-    }
-
-    public void callPhoneNumber() {
-
-        try {
-
-            if (Build.VERSION.SDK_INT > 22) {
-
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) !=PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{
-                            Manifest.permission.CALL_PHONE}, 101);
-                    return;
-                }
-
-                Intent callIntent = new Intent(Intent.ACTION_CALL);
-                callIntent.setData(Uri.parse("tel:" + inputNumber.getText().toString()));
-                startActivity(callIntent);
-
-            } else {
-
-                Intent callIntent = new Intent(Intent.ACTION_CALL);
-                callIntent.setData(Uri.parse("tel:" + inputNumber.getText().toString()));
-                startActivity(callIntent);
-            }
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
-
-        }
-    }*/
 
 }
