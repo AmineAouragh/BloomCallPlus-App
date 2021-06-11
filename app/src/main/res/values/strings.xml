@@ -5,4 +5,11 @@
     <string name="tab_text_recent">RECENTS</string>
     <string name="tab_text_contacts">CONTACTS</string>
     <string name="tab_text_messages">MESSAGES</string>
+    <string name="fab_dialpad">Dialpad Fab</string>
+    <string name="recents_txt">You still didn\'t call anyone</string>
+    <string name="contacts_tagline">Add New Contacts Here</string>
+    <string name="messages_tagline">You can type a new message here</string>
+    <string name="new_contact_text">New Contact</string>
+    <string name="new_msg_text">New Message</string>
+    <string name="dial_text">Dial</string>
 </resources>
