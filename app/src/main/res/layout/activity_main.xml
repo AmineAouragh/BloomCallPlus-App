@@ -47,16 +47,81 @@
         tools:ignore="MissingConstraints,NotSibling"
         tools:layout_editor_absoluteX="3dp" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:id="@+id/fab"
-                android:layout_gravity="end|bottom"
+                android:id="@+id/new_action_fab"
+                android:layout_gravity="end"
                 android:layout_margin="16dp"
-                android:src="@drawable/ic_outline_dialpad"
+                app:icon="@drawable/ic_outline_add"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:contentDescription="Fab" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/new_contact"
+        android:layout_marginBottom="24dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/new_action_fab"
+        app:layout_constraintEnd_toEndOf="@+id/new_action_fab"
+        app:srcCompat="@drawable/ic_person_add"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_new_contact_text"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/new_contact_text"
+        app:layout_constraintBottom_toBottomOf="@+id/new_contact"
+        app:layout_constraintEnd_toStartOf="@+id/new_contact"
+        app:layout_constraintTop_toTopOf="@+id/new_contact"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/new_msg"
+        android:layout_marginBottom="24dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/new_contact"
+        app:layout_constraintEnd_toEndOf="@+id/new_contact"
+        app:srcCompat="@drawable/ic_create"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/new_msg_text"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/new_msg_text"
+        app:layout_constraintBottom_toBottomOf="@+id/new_msg"
+        app:layout_constraintEnd_toStartOf="@+id/new_msg"
+        app:layout_constraintTop_toTopOf="@+id/new_msg"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/new_dial"
+        android:layout_marginBottom="24dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/new_msg"
+        app:layout_constraintEnd_toEndOf="@+id/new_msg"
+        app:srcCompat="@drawable/ic_outline_dialpad"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/new_dial_text"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/dial_text"
+        app:layout_constraintBottom_toBottomOf="@+id/new_dial"
+        app:layout_constraintEnd_toStartOf="@+id/new_dial"
+        app:layout_constraintTop_toTopOf="@+id/new_dial"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
