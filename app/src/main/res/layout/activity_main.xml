@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,27 +7,30 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar_top"
+        android:textAlignment="center"
+        tools:ignore="MissingConstraints"
+        android:minHeight="?android:actionBarSize"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar_title"
+            android:text="@string/app_name"
+            android:layout_gravity="center"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/teal_200"
         android:theme="@style/Theme.ContactsApp"
         tools:ignore="MissingConstraints">
-
-
-      <TextView
-          android:id="@+id/title"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:gravity="center"
-          android:minHeight="?actionBarSize"
-          android:padding="16dp"
-          android:text="@string/app_name"
-          android:textSize="35sp"
-          android:textAlignment="center"
-          android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
-          tools:ignore="MissingConstraints" />
-
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
