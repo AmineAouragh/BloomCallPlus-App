@@ -12,4 +12,8 @@
     <string name="new_contact_text">New Contact</string>
     <string name="new_msg_text">New Message</string>
     <string name="dial_text">Dial</string>
+    <string name="about_us_text">About Us</string>
+    <string name="report_bug_text">Report Bug</string>
+    <string name="donate_text">Donate</string>
+    <string name="settings_text">Settings</string>
 </resources>
