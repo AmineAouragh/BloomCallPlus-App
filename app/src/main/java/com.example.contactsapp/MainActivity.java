@@ -1,11 +1,16 @@
 package com.example.contactsapp;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
@@ -42,9 +47,16 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
         setContentView(R.layout.activity_main);
+
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#FF03DAC5"));
+
+        actionBar.setBackgroundDrawable(colorDrawable);
 
         mNewActionFab = findViewById(R.id.new_action_fab);
 
@@ -147,4 +159,10 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(2).setIcon(tabIcons[2]);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
 }
