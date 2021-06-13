@@ -1,4 +1,4 @@
-# BloomCallPlus App
+# BloomCall+ App
 
 Project began (June 3, 2021)
 
