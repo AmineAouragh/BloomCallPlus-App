@@ -1,10 +1,12 @@
 package com.example.contactsapp;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -164,5 +166,27 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.about:
+                // about
+                return true;
+            case R.id.report_bug:
+                // report bug
+                return true;
+            case R.id.settings:
+                // settings
+                return true;
+            case R.id.donate:
+                // donate
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 }
