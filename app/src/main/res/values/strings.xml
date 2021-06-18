@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ContactsApp</string>
+    <string name="app_name">BloomCall+</string>
     <string name="number">Add Number</string>
     <string name="call">CALL</string>
     <string name="tab_text_recent">RECENTS</string>
