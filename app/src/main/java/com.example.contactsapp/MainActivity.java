@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -196,8 +197,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void sendEmail() {
-        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-        emailIntent.setType("text/plain");
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse("mailto:"));
         emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"ask.bloomcall@gmail.com"});
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Email subject");
         emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message text");
