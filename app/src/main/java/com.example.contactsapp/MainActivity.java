@@ -1,6 +1,7 @@
 package com.example.contactsapp;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -11,11 +12,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.contactsapp.main.ReportActivity;
 import com.example.contactsapp.main.SectionsPagerAdapter;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Boolean isAllFabsVisible;
 
-    private int[] tabIcons = {
+    private final int[] tabIcons = {
             R.drawable.ic_tab_history,
             R.drawable.ic_outline_call,
             R.drawable.ic_outline_message
@@ -171,12 +174,13 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = null;
         switch(item.getItemId()) {
             case R.id.about:
                 // about
                 return true;
             case R.id.report_bug:
-                // report bug
+                sendEmail();
                 return true;
             case R.id.settings:
                 // settings
@@ -188,5 +192,23 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
 
         }
+
     }
+
+    protected void sendEmail() {
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"ask.bloomcall@gmail.com"});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Email subject");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message text");
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            finish();
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(MainActivity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
 }
